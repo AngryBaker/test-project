@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детальная информация о кружке</title>
+    <style>
+        .task-box {
+            position: relative;
+            color: #000;
+            border: 1px solid #aaa;
+            padding: 50px 15%;
+        }
+        .task-body {
+            background: url('../images/map-background.jpg') no-repeat center center;
+            background-size: cover;
+            border-radius: 30px;
+            margin-top: 20px;
+            box-shadow: 0 0 15px 10px #0000004d;
+            overflow: hidden;
+            z-index: 0;
+            position: relative;
+            aspect-ratio: 3 / 2;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .btn-box_links {
+            top: 10px;
+            right: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+        }
+        .circle-info {
+            position: relative;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            height: 100%;
+    
+        }
+        .circle {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px dotted lawngreen;
+            border-radius: 50%;
+            background-color: #0006;
+        }
+        .back-link {
+            border: 1px solid #000;
+            padding: 5px 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="task-box">
+        <div class="btn-box_links"><a href="index.html" class="back-link">Назад</a></div>
+        <div class="task-body">
+            <div class="circle-info" id="circle-info"></div>
+            <div id="circle" class="circle"></div>
+        </div>    
+    </div>
+    
+    
+    
+
+    <script>
+        
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                id: params.get('id'),
+                top: params.get('top'),
+                left: params.get('left'),
+                group: params.get('group'),
+                leftCoord: params.get('leftcord'),
+                topCoord: params.get('topcord'),
+            };
+        }
+
+        function displayCircleInfo(params) {
+            const infoContainer = document.getElementById('circle-info');
+            infoContainer.innerHTML = `
+                <p>ID элемента: ${params.id}</p>
+                <p>Отступ сверху: ${params.topCoord}px</p>
+                <p>Отступ слева: ${params.leftCoord}px</p>
+                <p>Группа: ${params.group}</p>
+            `;
+
+            
+            circle.style.top = `${params.top}`;
+            circle.style.left = `${params.left}`;
+            circle.className = `circle group-${params.group}`;
+        }
+        // const circle = document.getElementById('circle');
+        // const circleParent = document.getElementsByClassName('task-body')[0];
+        // const circleCoords = circle.getBoundingClientRect();
+        // const circleParentCoords = circleParent.getBoundingClientRect();
+        // const topCoord = Math.round(circleCoords.top - circleParentCoords.top);
+        // const leftCoord = Math.round(circleCoords.left - circleParentCoords.left);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = getQueryParams();
+            displayCircleInfo(params);
+        });
+    </script>
+</body>
+</html>
