@@ -58,7 +58,7 @@ function createCircle(circle) {
     const circleParentCoords = circleParent.getBoundingClientRect();
     const topCoord = Math.round(circleCoords.top - circleParentCoords.top);
     const leftCoord = Math.round(circleCoords.left - circleParentCoords.left);
-    link.href = `/star.html?id=${circle.id}&top=${circle.top}&left=${circle.left}&group=${circle.group}&topcord=${topCoord}&leftcord=${leftCoord}`;
+    link.href = `./star.html?id=${circle.id}&top=${circle.top}&left=${circle.left}&group=${circle.group}&topcord=${topCoord}&leftcord=${leftCoord}`;
 }
 
 function updateGroupCircles(circlesData, groupToUpdate, circlesPerGroup) {
@@ -80,23 +80,3 @@ function updateGroupCircles(circlesData, groupToUpdate, circlesPerGroup) {
     circlesData.push(...newCircles);
 }
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const circles = document.querySelectorAll('.star');
-
-//     circles.forEach(circle => {
-//         circle.addEventListener('click', (event) => {
-            
-
-//             const round = event.target;
-//             const circleParent = event.target.parentElement;
-//             const circleCoords = round.getBoundingClientRect();
-//             const circleParentCoords = circleParent.getBoundingClientRect();
-//             const topCoord = Math.round(circleCoords.top - circleParentCoords.top);
-//             const leftCoord = Math.round(circleCoords.left - circleParentCoords.left);
-
-//             // Переход на страницу `star.html` с передачей параметров
-//             // window.location.href = `star.html?id=${id}&top=${parseFloat(top)}&left=${parseFloat(left)}&group=${group}&topcord=${topCoord}&leftcord=${leftCoord}`;
-            
-//         });
-//     });
-// });
